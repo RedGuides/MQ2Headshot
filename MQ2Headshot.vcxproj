@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{4019E311-4E40-7598-76B9-6D407C8F58C9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <SccProjectName>SAK</SccProjectName>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
