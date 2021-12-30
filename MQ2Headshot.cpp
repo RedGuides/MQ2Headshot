@@ -1,6 +1,6 @@
 // MQ2Headshot.cpp : Defines the entry point for the DLL application.
 // Author: Naes
-#include "../MQ2Plugin.h"
+#include <mq/Plugin.h>
 
 PreSetup("MQ2Headshot");
 PLUGIN_VERSION(1.3);
@@ -50,7 +50,7 @@ bool CanHeadshot(PSPAWNINFO pNewSpawn)
     if (GetSpawnType(pNewSpawn) == NPC && 
          gGameState==GAMESTATE_INGAME) // not at char select
     {
-        _ALTABILITY* aa = NULL;
+        ALTABILITY* aa = NULL;
         int bodyType = HEADSHOT_HUMANOID;
         
         int maxKillLevel = 0; // set to highest headshotable, label all under it
@@ -163,7 +163,7 @@ void HeadcountCommand(PSPAWNINFO pChar, PCHAR szLine)
     }
 
     PSPAWNINFO pSpawns = NULL;
-    if (ppSpawnManager && pSpawnList)
+    if (pSpawnManager && pSpawnList)
     pSpawns = (PSPAWNINFO)pSpawnList;
 
     unsigned int count = 0;
@@ -194,7 +194,7 @@ PLUGIN_API VOID SetGameState(DWORD newGameState)
             showHeadCount = GetPrivateProfileInt(INISection, "ShowHeadcount", 1, INIFileName);
 
             PSPAWNINFO pNewSpawns = NULL;
-            if (ppSpawnManager && pSpawnList)
+            if (pSpawnManager && pSpawnList)
                 pNewSpawns = (PSPAWNINFO)pSpawnList;
 
             while (pNewSpawns)  // clear the lastnames
@@ -230,7 +230,7 @@ PLUGIN_API VOID ShutdownPlugin(VOID)
     DebugSpewAlways("Shutting down MQ2Headshot");
 
     PSPAWNINFO pClearSpawns = NULL;
-    if (ppSpawnManager && pSpawnList)
+    if (pSpawnManager && pSpawnList)
         pClearSpawns = (PSPAWNINFO)pSpawnList;
 
     while (pClearSpawns)  // clear the lastnames
