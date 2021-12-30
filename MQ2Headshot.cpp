@@ -121,7 +121,7 @@ bool CanHeadshot(PSPAWNINFO pNewSpawn)
     return false;
 }
 
-PLUGIN_API VOID OnAddSpawn(PSPAWNINFO pNewSpawn)
+PLUGIN_API void OnAddSpawn(PSPAWNINFO pNewSpawn)
 {
     if (CanHeadshot(pNewSpawn))
     {
@@ -180,7 +180,7 @@ void HeadcountCommand(PSPAWNINFO pChar, PCHAR szLine)
     WriteChatColor(buffer, USERCOLOR_DEFAULT);
 }
 
-PLUGIN_API VOID SetGameState(DWORD newGameState)
+PLUGIN_API void SetGameState(int newGameState)
 {
     DebugSpewAlways("MQ2Headshot::SetGameState(%d)", newGameState);
     // fix for first load
@@ -214,7 +214,7 @@ PLUGIN_API VOID SetGameState(DWORD newGameState)
     }
 }
 
-PLUGIN_API VOID InitializePlugin(VOID)
+PLUGIN_API void InitializePlugin()
 {
     if (GetCharInfo() && GetCharInfo()->pSpawn)
         pCharFix = GetCharInfo()->pSpawn;
@@ -225,7 +225,7 @@ PLUGIN_API VOID InitializePlugin(VOID)
 }
 
 // Called once, when the plugin is to shutdown
-PLUGIN_API VOID ShutdownPlugin(VOID)
+PLUGIN_API void ShutdownPlugin()
 {
     DebugSpewAlways("Shutting down MQ2Headshot");
 
